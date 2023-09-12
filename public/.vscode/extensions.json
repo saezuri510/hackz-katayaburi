@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "wayou.vscode-todo-highlight",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "Gruntfuggly.todo-tree"
+  ]
+}
