@@ -1,6 +1,41 @@
 {
   "extends": [
     "next/core-web-vitals",
+    "eslint:recommended",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:sort/recommended",
     "plugin:storybook/recommended"
-  ]
+  ],
+  "plugins": ["import", "sort", "@typescript-eslint"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "newlines-between": "always"
+      }
+    ],
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "reservedFirst": true,
+        "shorthandFirst": true
+      }
+    ],
+    "sort/imports": ["off"],
+    "react/jsx-curly-brace-presence": "error",
+    "react/jsx-boolean-value": "error",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "prefer-template": "error"
+  }
 }
