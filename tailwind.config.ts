@@ -4,6 +4,12 @@ module.exports = {
   mode: "jit",
   plugins: [],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        fuchsia: {
+          "925": "rgb(80 24 81)",
+        },
+      },
+    },
   },
 };
