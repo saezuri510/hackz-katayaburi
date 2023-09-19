@@ -2,7 +2,7 @@ import { ComponentProps, forwardRef } from "react";
 
 import { cn } from "@/utils/cn";
 
-export const Button = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
+export const PopButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
   ({ children, className, type = "button", ...rest }, forwardRef): JSX.Element => {
     return (
       <button
@@ -20,4 +20,4 @@ export const Button = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
   },
 );
 
-Button.displayName = "IndexButton";
+PopButton.displayName = "PopButton";

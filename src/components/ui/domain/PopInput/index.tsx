@@ -6,7 +6,7 @@ type Props = {
   placeholder: string;
 } & Omit<ComponentProps<"input">, "placeholder">;
 
-export const Input = forwardRef<HTMLInputElement, Props>(
+export const PopInput = forwardRef<HTMLInputElement, Props>(
   ({ className, placeholder, type = "text", ...rest }, forwardRef): JSX.Element => {
     return (
       <input
@@ -23,4 +23,4 @@ export const Input = forwardRef<HTMLInputElement, Props>(
   },
 );
 
-Input.displayName = "IndexInput";
+PopInput.displayName = "PopInput";
