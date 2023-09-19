@@ -6,6 +6,8 @@ import CircularProgress from "@/components/icons/Timer";
 import NumberPeople from "@/components/ui/NumberPeople";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
+import BackGround from "@/components/ui/BackGround";
+import Box from "@/components/ui/Box";
 
 export const ThemePage: NextPage = () => {
   const [count, setCount] = useState(0);
@@ -25,30 +27,32 @@ export const ThemePage: NextPage = () => {
   }, [count]);
 
   return (
-    <div className="flex h-screen w-screen justify-center bg-gradient-to-b from-sky-600 to-purple-400">
-      <div className="m-auto h-5/6 w-5/6 p-5 shadow-inner shadow-black">
-        <div className="flex justify-between">
-          <NumberPeople />
-          <CircularProgress count={count} />
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <Image
-            alt="image"
-            className="m-auto my-6"
-            height={200}
-            src="/image/clock.png"
-            width={200}
-          />
-          <div className="flex justify-center">
-            <PopInput
-              className="h-[40px] w-[400px]"
-              placeholder="ビーチでくつろぐハリーポッター"
-              type="text"
+    <BackGround>
+      <Box>
+        <div>
+          <div className="flex justify-between">
+            <NumberPeople />
+            <CircularProgress count={count} />
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <Image
+              alt="image"
+              className="m-auto my-6"
+              height={200}
+              src="/image/clock.png"
+              width={200}
             />
-            <PopButton className="ml-[8px] w-32 drop-shadow-lg">完了！</PopButton>
+            <div className="flex justify-center">
+              <PopInput
+                className="h-[40px] w-[400px]"
+                placeholder="ビーチでくつろぐハリーポッター"
+                type="text"
+              />
+              <PopButton className="ml-[8px] w-32 drop-shadow-lg">完了！</PopButton>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Box>
+    </BackGround>
   );
 };

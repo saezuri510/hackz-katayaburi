@@ -1,7 +1,8 @@
-import BackGround from '@/components/ui/BackGround';
-import NumberPeople from '@/components/ui/NumberPeople';
-import CircularProgress from '@/components/icons/Timer';
-import React, { useEffect, useState } from 'react'
+import BackGround from "@/components/ui/BackGround";
+import NumberPeople from "@/components/ui/NumberPeople";
+import CircularProgress from "@/components/icons/Timer";
+import React, { useEffect, useState } from "react";
+import Box from "@/components/ui/Box";
 
 export function AnswerPage() {
   const [count, SetCount] = useState(0);
@@ -21,25 +22,23 @@ export function AnswerPage() {
   }, [count]);
 
   return (
-		<BackGround>
-			<div className='w-screen h-screen bg-gradient-to-b from-sky-600 to-purple-400'>
-				<div className='m-auto p-5 w-full h-full'>
-					<div className="m-auto h-5/6 w-5/6 p-5 shadow-inner shadow-black">
-						<div className="flex justify-between m-5">
-							<NumberPeople />
-							<CircularProgress count={count} />
-						</div>
-						<div className='flex flex-col items-center m-5 h-2/3'>
-							<div className='text-center font-mono text-2xl'>お題</div>
-							<textarea className='m-5 h-full w-full outline-none rounded-md' />
-							<button className="ms-1 w-32 h-20 rounded-md border-2 bg-white drop-shadow-lg">
-								完了！
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</BackGround>
+    <BackGround>
+      <Box>
+        <div>
+          <div className="m-5 flex justify-between">
+            <NumberPeople />
+            <CircularProgress count={count} />
+          </div>
+          <div className="m-5 flex h-2/3 flex-col items-center">
+            <div className="text-center font-mono text-2xl">お題</div>
+            <textarea className="m-5 h-full w-full rounded-md outline-none" />
+            <button className="ms-1 h-20 w-32 rounded-md border-2 bg-white drop-shadow-lg">
+              完了！
+            </button>
+          </div>
+        </div>
+      </Box>
+    </BackGround>
   );
 }
 
