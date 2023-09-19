@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
+import { FrameText } from "@/components/icons/FrameText";
 import CircularProgress from "@/components/icons/Timer";
 import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
@@ -30,18 +31,13 @@ export const ThemePage: NextPage = () => {
     <MainLayout>
       <GameFrame>
         <>
-          <div className="flex justify-between">
+          <div className="flex w-[768px] justify-between">
             <NumberPeople />
             <CircularProgress count={count} />
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <Image
-              alt="image"
-              className="m-auto my-6"
-              height={200}
-              src="/image/clock.png"
-              width={200}
-            />
+          <div className="flex flex-col items-center justify-center space-y-[16px] pb-[64px]">
+            <Image alt="image" height={136} src="/image/clock.png" width={136} />
+            <FrameText text="動的型付け言語といえば？" />
             <div className="flex justify-center">
               <PopInput
                 className="h-[40px] w-[400px]"
