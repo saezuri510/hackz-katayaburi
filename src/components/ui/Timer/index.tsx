@@ -2,12 +2,12 @@ interface CircularProgressPercentage {
 	count: number;
 }
 
-export function CircularProgress( {count} : CircularProgressPercentage ) {
+function CircularProgress( {count} : CircularProgressPercentage ) {
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
   const offset = (count / 100) * circumference;
   return (
-    <svg width="120" height="120" className="rounded-full">
+    <svg width="120" height="120" className="rounded-full border border-black bg-white">
       <circle
         cx="60"
         cy="60"
@@ -22,3 +22,5 @@ export function CircularProgress( {count} : CircularProgressPercentage ) {
     </svg>
   );
 }
+
+export default CircularProgress
