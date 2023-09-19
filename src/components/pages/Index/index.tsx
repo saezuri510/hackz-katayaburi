@@ -1,18 +1,26 @@
 import clsx from "clsx";
 import { NextPage } from "next";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BsPlayFill } from "react-icons/bs";
 
 // import { MainLayout } from "@/components/layouts/MainLayout";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
+import { socket } from "@/libs/socket";
 
 type Inputs = {
   nickname: string;
-  password: string;
+  passphrase: string;
 };
 
 export const IndexPage: NextPage = () => {
+  useEffect(() => {
+    socket.on("joinedRoom", (roomPassphrase) => {
+      console.log(`Joined room with passphrase: ${roomPassphrase}`);
+    });
+  }, []);
+
   const {
     formState: { isValid },
     handleSubmit,
@@ -21,6 +29,7 @@ export const IndexPage: NextPage = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    socket.emit("joinOrCreateRoom", data.passphrase);
     console.log(data);
     reset();
   };
@@ -48,7 +57,7 @@ export const IndexPage: NextPage = () => {
               />
               <PopInput
                 placeholder="合言葉を入力"
-                {...register("password", {
+                {...register("passphrase", {
                   required: true,
                 })}
               />
