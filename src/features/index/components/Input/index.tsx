@@ -12,7 +12,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       <input
         ref={forwardRef}
         className={cn(
-          "cursor-text rounded-[3px] border-[1px] border-white/[.7] bg-white/[.3] px-[4px] text-white/[.8] placeholder-white/[.8] outline-none focus:border-white focus:bg-white/[.1] focus:text-white",
+          "cursor-text rounded-[3px] border-[1px] border-white/[.7] bg-white/[.3] px-[4px] text-[20px] text-white/[.8] placeholder-white/[.8] outline-none focus:border-white focus:bg-white/[.1] focus:text-white",
           className,
         )}
         placeholder={placeholder}

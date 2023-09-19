@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { NextPage } from "next";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { BsPlayFill } from "react-icons/bs";
 
 import { Button } from "@/features/index/components/Button";
 import { Input } from "@/features/index/components/Input";
@@ -34,39 +35,35 @@ export const IndexPage: NextPage = () => {
             ニックネームと合言葉を決める
           </div>
           <form
-            className="flex flex-col items-center justify-center space-y-[4px]"
+            className="flex flex-col items-center justify-center space-y-[16px]"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <Input
-              placeholder="ニックネームを入力"
-              {...register("nickname", {
-                required: true,
-              })}
-            />
-            <Input
-              placeholder="合言葉を入力"
-              {...register("password", {
-                required: true,
-              })}
-            />
+            <div className="flex flex-col items-center justify-center space-y-[4px]">
+              <Input
+                placeholder="ニックネームを入力"
+                {...register("nickname", {
+                  required: true,
+                })}
+              />
+              <Input
+                placeholder="合言葉を入力"
+                {...register("password", {
+                  required: true,
+                })}
+              />
+            </div>
             <div className="flex space-x-[16px]">
-              <Button
-                className="rounded-[4px] bg-white px-[10px] text-violet-950 shadow-[0_3px_0_0] shadow-violet-950 hover:bg-purple-300"
-                onClick={() => reset()}
-                type="button"
-              >
+              <Button onClick={() => reset()} type="button">
                 リセット
               </Button>
               <Button
-                className={clsx(
-                  "rounded-[4px] bg-white px-[10px] text-violet-950 shadow-[0_3px_0_0] shadow-violet-950 hover:bg-purple-300",
-                  {
-                    "cursor-no-drop bg-gray-400 hover:bg-gray-400": !isValid,
-                  },
-                )}
+                className={clsx({
+                  "cursor-no-drop bg-gray-400 hover:bg-gray-400": !isValid,
+                })}
                 type="submit"
               >
-                開始
+                <BsPlayFill />
+                <div className="flex w-[60px] items-center justify-center">開始</div>
               </Button>
             </div>
           </form>
