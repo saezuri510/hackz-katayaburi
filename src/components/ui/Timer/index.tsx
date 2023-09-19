@@ -7,7 +7,7 @@ export function CircularProgress( {count} : CircularProgressPercentage ) {
   const circumference = 2 * Math.PI * radius;
   const offset = (count / 100) * circumference;
   return (
-    <svg width="120" height="120" className="rounded-full">
+    <svg width="120" height="120" className="rounded-full border border-black">
       <circle
         cx="60"
         cy="60"
