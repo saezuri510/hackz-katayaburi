@@ -1,5 +1,6 @@
 import { ComponentProps, forwardRef } from "react";
-import { tv } from "tailwind-variants";
+
+import { cn } from "@/utils/cn";
 
 type Props = {
   placeholder: string;
@@ -10,9 +11,10 @@ export const Input = forwardRef<HTMLInputElement, Props>(
     return (
       <input
         ref={forwardRef}
-        className={tv({
-          base: "cursor-text rounded-[3px] border-[1px] border-white/[.7] bg-white/[.3] px-[4px] text-white/[.8] placeholder-white/[.8] outline-none focus:border-white focus:bg-white/[.1] focus:text-white",
-        })({ className: className })}
+        className={cn(
+          "cursor-text rounded-[3px] border-[1px] border-white/[.7] bg-white/[.3] px-[4px] text-white/[.8] placeholder-white/[.8] outline-none focus:border-white focus:bg-white/[.1] focus:text-white",
+          className,
+        )}
         placeholder={placeholder}
         type={type}
         {...rest}
