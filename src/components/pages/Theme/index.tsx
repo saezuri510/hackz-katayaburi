@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import CircularProgress from "@/components/icons/Timer";
 import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
-import NumberPeople from "@/components/ui/NumberPeople";
+import NumberPeople from "@/components/layouts/NumberPeople";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
 
