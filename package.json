@@ -14,11 +14,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "next": "^13.4.19",
+    "clsx": "^2.0.0",
+    "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.46.1",
-    "tailwind-variants": "^0.1.14"
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.4.1",
