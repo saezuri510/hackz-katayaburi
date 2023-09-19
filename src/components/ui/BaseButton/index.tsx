@@ -1,13 +1,13 @@
 import { ComponentProps, forwardRef } from "react";
 import { tv } from "tailwind-variants";
 
-export const SampleButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
+export const BaseButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
   ({ children, className, type = "button", ...rest }, forwardRef): JSX.Element => {
     return (
       <button
         ref={forwardRef}
         className={tv({
-          base: "flex h-[32px] cursor-pointer items-center justify-center rounded border bg-white font-medium",
+          base: "flex cursor-pointer items-center justify-center",
         })({ className: className })}
         type={type}
         {...rest}
@@ -18,4 +18,4 @@ export const SampleButton = forwardRef<HTMLButtonElement, ComponentProps<"button
   },
 );
 
-SampleButton.displayName = "Button";
+BaseButton.displayName = "BaseButton";
