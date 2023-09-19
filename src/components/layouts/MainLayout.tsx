@@ -1,9 +1,13 @@
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 
-export const MainLayout = (page: ReactNode) => {
+type Props = {
+  children: ReactElement;
+};
+
+export const MainLayout = ({ children }: Props) => {
   return (
     <div className="h-screen w-screen bg-gradient-to-b from-sky-600 to-purple-400 p-[32px]">
-      {page}
+      {children}
     </div>
   );
 };

@@ -3,11 +3,11 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import CircularProgress from "@/components/icons/Timer";
+import { MainLayout } from "@/components/layouts/MainLayout";
+import Box from "@/components/ui/Box";
 import NumberPeople from "@/components/ui/NumberPeople";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
-import BackGround from "@/components/ui/BackGround";
-import Box from "@/components/ui/Box";
 
 export const ThemePage: NextPage = () => {
   const [count, setCount] = useState(0);
@@ -27,7 +27,7 @@ export const ThemePage: NextPage = () => {
   }, [count]);
 
   return (
-    <BackGround>
+    <MainLayout>
       <Box>
         <div>
           <div className="flex justify-between">
@@ -53,6 +53,6 @@ export const ThemePage: NextPage = () => {
           </div>
         </div>
       </Box>
-    </BackGround>
+    </MainLayout>
   );
 };

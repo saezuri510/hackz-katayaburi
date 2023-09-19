@@ -1,12 +1,13 @@
-import BackGround from '@/components/ui/BackGround'
-import React from 'react'
+import React from "react";
+
+import { MainLayout } from "@/components/layouts/MainLayout";
 
 function ChatPage() {
   return (
-    <BackGround>
-      <div></div>
-    </BackGround>
-  )
+    <MainLayout>
+      <div />
+    </MainLayout>
+  );
 }
 
-export default ChatPage
+export default ChatPage;

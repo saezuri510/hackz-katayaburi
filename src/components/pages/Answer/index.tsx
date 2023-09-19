@@ -1,8 +1,9 @@
-import BackGround from "@/components/ui/BackGround";
-import NumberPeople from "@/components/ui/NumberPeople";
-import CircularProgress from "@/components/icons/Timer";
 import React, { useEffect, useState } from "react";
+
+import CircularProgress from "@/components/icons/Timer";
+import { MainLayout } from "@/components/layouts/MainLayout";
 import Box from "@/components/ui/Box";
+import NumberPeople from "@/components/ui/NumberPeople";
 
 export function AnswerPage() {
   const [count, SetCount] = useState(0);
@@ -22,7 +23,7 @@ export function AnswerPage() {
   }, [count]);
 
   return (
-    <BackGround>
+    <MainLayout>
       <Box>
         <div>
           <div className="m-5 flex justify-between">
@@ -38,7 +39,7 @@ export function AnswerPage() {
           </div>
         </div>
       </Box>
-    </BackGround>
+    </MainLayout>
   );
 }
 

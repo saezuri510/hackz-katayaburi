@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BsPlayFill } from "react-icons/bs";
 
-// import { MainLayout } from "@/components/layouts/MainLayout";
+import { MainLayout } from "@/components/layouts/MainLayout";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
 
@@ -26,7 +26,7 @@ export const IndexPage: NextPage = () => {
   };
 
   return (
-    <div>
+    <MainLayout>
       <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[6px] border-[2px] border-zinc-900/[.15] p-[4px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
         <div className="flex items-center justify-center text-[20px] text-red-500">
           Programming Phone
@@ -70,6 +70,6 @@ export const IndexPage: NextPage = () => {
           </form>
         </div>
       </div>
-    </div>
+    </MainLayout>
   );
 };
