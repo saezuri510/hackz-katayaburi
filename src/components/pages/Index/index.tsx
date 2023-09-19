@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { NextPage } from "next";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { BaseButton } from "@/components/ui/BaseButton";
+import { Button } from "@/features/index/components/Button";
 import { Input } from "@/features/index/components/Input";
 
 type Inputs = {
@@ -50,14 +50,14 @@ export const IndexPage: NextPage = () => {
               })}
             />
             <div className="flex space-x-[16px]">
-              <BaseButton
+              <Button
                 className="rounded-[4px] bg-white px-[10px] text-violet-950 shadow-[0_3px_0_0] shadow-violet-950 hover:bg-purple-300"
                 onClick={() => reset()}
                 type="button"
               >
                 リセット
-              </BaseButton>
-              <BaseButton
+              </Button>
+              <Button
                 className={clsx(
                   "rounded-[4px] bg-white px-[10px] text-violet-950 shadow-[0_3px_0_0] shadow-violet-950 hover:bg-purple-300",
                   {
@@ -67,7 +67,7 @@ export const IndexPage: NextPage = () => {
                 type="submit"
               >
                 開始
-              </BaseButton>
+              </Button>
             </div>
           </form>
         </div>
