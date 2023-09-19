@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { CircularProgress } from "../../ui/Timer/index";
+import CircularProgress from "@/components/ui/Timer";
+import NumberPeople from "@/components/ui/NumberPeople";
 
 export function ThemePage() {
   const [count, setCount] = useState(0);
@@ -23,16 +24,16 @@ export function ThemePage() {
     <div className="flex h-screen w-screen justify-center bg-gradient-to-b from-sky-600 to-purple-400">
       <div className="m-auto h-5/6 w-5/6 p-5 shadow-inner shadow-black">
         <div className="flex justify-between">
-          <div className="text-2xl uppercase text-white">1/1</div>
+          <NumberPeople />
           <CircularProgress count={count} />
         </div>
         <div className="flex flex-col items-center justify-center">
           <Image
             alt="image"
             className="m-auto my-6"
-            height={100}
+            height={200}
             src="/image/clock.png"
-            width={100}
+            width={200}
           />
           <div className="m-5 text-center font-mono text-2xl text-red-600">文章を書き込もう</div>
           <div className="flex justify-center">

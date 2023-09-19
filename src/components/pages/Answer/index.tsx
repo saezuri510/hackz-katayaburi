@@ -1,4 +1,5 @@
-import { CircularProgress } from '@/components/ui/Timer';
+import NumberPeople from '@/components/ui/NumberPeople';
+import CircularProgress from '@/components/ui/Timer';
 import React, { useEffect, useState } from 'react'
 
 export function AnswerPage() {
@@ -23,7 +24,7 @@ export function AnswerPage() {
 			<div className='m-auto p-5 w-full h-full'>
 				<div className="m-auto h-5/6 w-5/6 p-5 shadow-inner shadow-black">
 					<div className="flex justify-between m-5">
-						<div className="text-2xl uppercase text-white">1/1</div>
+						<NumberPeople />
 						<CircularProgress count={count} />
 					</div>
 					<div className='flex flex-col items-center m-5 h-2/3'>
