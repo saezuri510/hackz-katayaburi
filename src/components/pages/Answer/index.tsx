@@ -1,12 +1,12 @@
 import BackGround from '@/components/ui/BackGround';
 import NumberPeople from '@/components/ui/NumberPeople';
-import CircularProgress from '@/components/ui/Timer';
+import CircularProgress from '@/components/icons/Timer';
 import React, { useEffect, useState } from 'react'
 
 export function AnswerPage() {
-	const [count, SetCount] = useState(0);
+  const [count, SetCount] = useState(0);
 
-	useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       SetCount((prev) => {
         if (prev <= 60) {
@@ -18,7 +18,7 @@ export function AnswerPage() {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [count]);
 
   return (
 		<BackGround>
@@ -43,4 +43,4 @@ export function AnswerPage() {
   );
 }
 
-export default AnswerPage
+export default AnswerPage;

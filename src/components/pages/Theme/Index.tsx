@@ -1,9 +1,13 @@
+import { NextPage } from "next";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import CircularProgress from "@/components/ui/Timer";
-import NumberPeople from "@/components/ui/NumberPeople";
 
-export function ThemePage() {
+import CircularProgress from "@/components/icons/Timer";
+import NumberPeople from "@/components/ui/NumberPeople";
+import { PopButton } from "@/components/ui/domain/PopButton";
+import { PopInput } from "@/components/ui/domain/PopInput";
+
+export const ThemePage: NextPage = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -18,7 +22,7 @@ export function ThemePage() {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [count]);
 
   return (
     <div className="flex h-screen w-screen justify-center bg-gradient-to-b from-sky-600 to-purple-400">
@@ -35,19 +39,16 @@ export function ThemePage() {
             src="/image/clock.png"
             width={200}
           />
-          <div className="m-5 text-center font-mono text-2xl text-red-600">文章を書き込もう</div>
           <div className="flex justify-center">
-            <input
-              className="h-[40px] w-[400px] rounded-md border-2 border-white bg-white/[.3] px-[4px] placeholder-white outline-none"
+            <PopInput
+              className="h-[40px] w-[400px]"
               placeholder="ビーチでくつろぐハリーポッター"
               type="text"
             />
-            <button className="ms-1 w-32 rounded-md border-2 bg-white drop-shadow-lg">
-              完了！
-            </button>
+            <PopButton className="ml-[8px] w-32 drop-shadow-lg">完了！</PopButton>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
