@@ -1,19 +1,19 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { SampleButton } from ".";
+import { BaseButton } from ".";
 
-type Story = StoryObj<typeof SampleButton>;
+type Story = StoryObj<typeof BaseButton>;
 
-const meta: Meta<typeof SampleButton> = {
+const meta: Meta<typeof BaseButton> = {
   args: {
     children: "ボタン",
   },
   argTypes: {
     className: { control: { type: "text" } },
   },
-  component: SampleButton,
+  component: BaseButton,
   tags: ["autodocs"],
-  title: "UI/SampleButton",
+  title: "UI/BaseButton",
 };
 
 export const _Button: Story = {};
