@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import CircularProgress from "@/components/icons/Timer";
+import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
-import Box from "@/components/ui/Box";
 import NumberPeople from "@/components/ui/NumberPeople";
 
 export function AnswerPage() {
@@ -24,7 +24,7 @@ export function AnswerPage() {
 
   return (
     <MainLayout>
-      <Box>
+      <GameFrame>
         <div>
           <div className="m-5 flex justify-between">
             <NumberPeople />
@@ -38,7 +38,7 @@ export function AnswerPage() {
             </button>
           </div>
         </div>
-      </Box>
+      </GameFrame>
     </MainLayout>
   );
 }

@@ -1,11 +1,14 @@
 import React from "react";
 
+import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 
 function ChatPage() {
   return (
     <MainLayout>
-      <div />
+      <GameFrame>
+        <div />
+      </GameFrame>
     </MainLayout>
   );
 }

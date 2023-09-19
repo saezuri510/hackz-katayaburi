@@ -3,8 +3,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import CircularProgress from "@/components/icons/Timer";
+import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
-import Box from "@/components/ui/Box";
 import NumberPeople from "@/components/ui/NumberPeople";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
@@ -28,8 +28,8 @@ export const ThemePage: NextPage = () => {
 
   return (
     <MainLayout>
-      <Box>
-        <div>
+      <GameFrame>
+        <>
           <div className="flex justify-between">
             <NumberPeople />
             <CircularProgress count={count} />
@@ -51,8 +51,8 @@ export const ThemePage: NextPage = () => {
               <PopButton className="ml-[8px] w-32 drop-shadow-lg">完了！</PopButton>
             </div>
           </div>
-        </div>
-      </Box>
+        </>
+      </GameFrame>
     </MainLayout>
   );
 };
