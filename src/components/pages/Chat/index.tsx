@@ -13,7 +13,7 @@ function ChatPage() {
       <div className="flex h-full justify-center">
         <div className="mx-5 flex w-96 flex-col items-center rounded-[6px] border-[2px] border-zinc-900/[.15] px-[15px] py-[10px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
           <FrameText fillColor="#73EECD" fontSize={100} text="プレイヤー" width={200} />
-          <UserBord name="Akira" />
+          <UserBord name="Akira" {...{ status: false }} />
         </div>
         <div className="h-full w-5/6 rounded-[6px] border-[2px] border-zinc-900/[.15] px-[15px] py-[10px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
           <div className="flex h-full flex-col justify-center">
