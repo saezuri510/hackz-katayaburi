@@ -24,20 +24,14 @@ export const IndexPage: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const onKurakke = (message: string) => {
-      console.log(`Connected to the server${message}`);
-    };
-
     const onRoomMembers = (members: Player[]) => {
       addMember(members);
       router.push("/member");
     };
 
-    socket.on("kurakke", onKurakke);
     socket.on("roomMembers", onRoomMembers);
 
     return () => {
-      socket.off("kurakke", onKurakke);
       socket.off("roomMembers", onRoomMembers);
     };
   }, [addMember, router]);

@@ -7,36 +7,45 @@ import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import UserBord from "@/components/ui/domain/UserBord";
+import { Player } from "@/libs/recoil/types/Player";
+import { useGameResultState } from "@/libs/recoil/useGameResultState";
 import { useRoomState } from "@/libs/recoil/useRoomState";
 import { socket } from "@/libs/socket";
 
 const MemberPage = () => {
-  const { roomValue } = useRoomState();
+  const { addMember, roomValue } = useRoomState();
+  const { setGameResultValue } = useGameResultState();
 
   const router = useRouter();
 
   useEffect(() => {
     const onGamestart = () => {
-      // router.push("theme");
+      router.push("theme");
     };
 
     const onYourTurn = (msgToSend: string) => {
-      console.log("member page question", msgToSend);
+      setGameResultValue((prev) => ({
+        ...prev,
+        theme: msgToSend,
+      }));
     };
 
-    // TODO: 他のユーザーが入ったことを検知するlistenerの登録
+    const onRoomMembers = (members: Player[]) => {
+      addMember(members);
+    };
 
     socket.on("gamestart", onGamestart);
     socket.on("yourTurn", onYourTurn);
+    socket.on("roomMembers", onRoomMembers);
 
     return () => {
       socket.off("gamestart", onGamestart);
       socket.off("yourTurn", onYourTurn);
+      socket.off("roomMembers", onRoomMembers);
     };
-  }, [router]);
+  }, [router, setGameResultValue, addMember]);
 
   const handleStart = () => {
-    console.log("push");
     socket.emit("gamestart", roomValue.passphrase);
   };
 

@@ -21,7 +21,6 @@ export const ThemePage: NextPage = () => {
 
   useEffect(() => {
     const onYourTurn = (msgToSend: string) => {
-      console.log("Theme page question");
       setQuestion(msgToSend);
     };
 
