@@ -26,7 +26,7 @@ export const IndexPage: NextPage = () => {
 
     const onJoinedRoom = (passphrase: string) => {
       console.log(`Joined room with passphrase: ${passphrase}`);
-      router.push("/theme");
+      router.push("/member");
     };
 
     socket.on("kurakke", onKurakke);

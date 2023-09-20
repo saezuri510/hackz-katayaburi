@@ -10,7 +10,7 @@ function ChatPage() {
     <MainLayout>
       <GameFrame>
         <div className="flex flex-col justify-center">
-          <div className="shadow shadow-black">
+          <div className="my-[24px] justify-center rounded-[5px] bg-fuchsia-925/[.25] p-[16px] shadow-[inset_0_4px_0_0] shadow-black/[.2]">
             <ChatBubble align="left" name="akira">
               akira
             </ChatBubble>
