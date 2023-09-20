@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { BsPlayFill } from "react-icons/bs";
 
+import { FrameText } from "@/components/icons/FrameText";
 import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import { PopButton } from "@/components/ui/domain/PopButton";
@@ -39,19 +41,20 @@ const MemberPage = () => {
     <MainLayout>
       <div className="flex justify-center">
         <GameFrame>
-          <div className="flex flex-col items-center justify-center space-y-[16px]">
-            <div className="mt-[24px] flex w-96 flex-col items-center justify-center space-y-[12px] rounded-[5px] bg-fuchsia-925/[.25] p-[16px]">
-              <div className="text-center">プレイヤー(1)</div>
-              <UserBord name="Akira" />
-              <UserBord name="空" />
-              <UserBord name="空" />
-              <UserBord name="空" />
-              <UserBord name="空" />
-              <UserBord name="空" />
+          <div className="flex w-96 flex-col items-center">
+            <FrameText fillColor="#73EECD" fontSize={100} text="プレイヤー" width={200} />
+            <UserBord status name="Akira" />
+            <UserBord name="空" status={false} />
+            <UserBord name="空" status={false} />
+            <UserBord name="空" status={false} />
+            <UserBord name="空" status={false} />
+            <UserBord name="空" status={false} />
+            <div className="pt-3">
+              <PopButton onClick={handleStart}>
+                <BsPlayFill />
+                <div className="flex h-[30px] w-[60px] items-center justify-center">開始</div>
+              </PopButton>
             </div>
-            <PopButton className="" onClick={handleStart}>
-              開始
-            </PopButton>
           </div>
         </GameFrame>
       </div>
