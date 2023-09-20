@@ -10,30 +10,30 @@ const ProgrammingPhone = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <text
-        dominant-baseline="alphabetic"
+        dominantBaseline="alphabetic"
         dy="0.4em"
         fill="#ffffff"
-        font-family="Meiryo UI"
-        font-size="35"
-        font-weight="bold"
-        letter-spacing="7"
+        fontFamily="Meiryo UI"
+        fontSize="35"
+        fontWeight="bold"
+        letterSpacing="7"
         stroke="#00007f"
-        stroke-linejoin="round"
-        stroke-width="15"
+        strokeLinejoin="round"
+        strokeWidth="15"
         x="8"
         y="50%"
       >
         Programming Phone
       </text>
       <text
-        dominant-baseline="alphabetic"
+        dominantBaseline="alphabetic"
         dy="0.4em"
         fill="#ffffff"
-        font-family="Meiryo UI"
-        font-size="35"
-        font-weight="bold"
-        letter-spacing="7"
-        stroke-width="0"
+        fontFamily="Meiryo UI"
+        fontSize="35"
+        fontWeight="bold"
+        letterSpacing="7"
+        strokeWidth="0"
         x="8"
         y="50%"
       >
