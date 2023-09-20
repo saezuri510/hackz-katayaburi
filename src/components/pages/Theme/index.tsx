@@ -9,7 +9,33 @@ import { Timer } from "@/components/layouts/Timer";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
 
+function play() {
+  const audio = new Audio("/sound/bell.mp3");
+  audio.play();
+}
+
 export const ThemePage: NextPage = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount((prev: number) => {
+        if (count <= 1199) {
+          const remainingTime = 1200 - prev;
+          if (remainingTime <= 300) {
+            console.log(1);
+            play();
+          }
+          return prev + 1;
+        }
+        return prev;
+      });
+    }, 1);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [count]);
+
   return (
     <MainLayout>
       <GameFrame>
@@ -35,3 +61,11 @@ export const ThemePage: NextPage = () => {
     </MainLayout>
   );
 };
+function useState(arg0: number): [any, any] {
+  throw new Error("Function not implemented.");
+}
+
+function useEffect(arg0: () => () => void, arg1: any[]) {
+  throw new Error("Function not implemented.");
+}
+
