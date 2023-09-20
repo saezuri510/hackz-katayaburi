@@ -11,7 +11,7 @@ export const Timer = ({ count }: Props) => {
     <div className="relative h-[150px] w-[150px]">
       <CircularProgress count={count} />
       <Image
-        alt="lap-timer"
+        alt="lap-timer-frame"
         className="absolute"
         height={150}
         src="/svgs/lap-timer-frame.svg"
