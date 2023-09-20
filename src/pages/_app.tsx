@@ -1,12 +1,13 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Nunito_Sans } from "next/font/google";
+import { RecoilRoot } from "recoil";
 
 const NUNITO_SANS_BOLD = Nunito_Sans({ style: "normal", subsets: ["cyrillic"], weight: "900" });
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <div>
+    <RecoilRoot>
       <Component {...pageProps} />
       <style global jsx>
         {`
@@ -15,7 +16,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           }
         `}
       </style>
-    </div>
+    </RecoilRoot>
   );
 };
 
