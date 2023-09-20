@@ -2,15 +2,16 @@ type Props = {
   text: string;
   fillColor: string;
   fontSize: number;
+  width?: number
 };
 
-export const FrameText = ({ fillColor, fontSize, text }: Props) => {
+export const FrameText = ({ fillColor, fontSize, text, width = 613 }: Props) => {
   return (
     <svg
       height="52"
       preserveAspectRatio="xMinYMid"
       viewBox="0 0 613 52"
-      width="613"
+      width={width}
       xmlns="http://www.w3.org/2000/svg"
     >
       <text
