@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BsPlayFill } from "react-icons/bs";
@@ -16,6 +17,8 @@ type Inputs = {
 };
 
 export const IndexPage: NextPage = () => {
+  const router = useRouter();
+
   useEffect(() => {
     const onKurakke = (message: string) => {
       console.log(`Connected to the server${message}`);
@@ -23,6 +26,7 @@ export const IndexPage: NextPage = () => {
 
     const onJoinedRoom = (passphrase: string) => {
       console.log(`Joined room with passphrase: ${passphrase}`);
+      router.push("/theme");
     };
 
     socket.on("kurakke", onKurakke);
@@ -32,7 +36,7 @@ export const IndexPage: NextPage = () => {
       socket.off("kurakke", onKurakke);
       socket.off("joinedRoom", onJoinedRoom);
     };
-  }, []);
+  }, [router]);
 
   const {
     formState: { isValid },
@@ -42,7 +46,7 @@ export const IndexPage: NextPage = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    socket.emit("joinOrCreateRoom", data.passphrase);
+    socket.emit("joinOrCreateRoom", data.passphrase, data.nickname);
     console.log(data);
     reset();
   };
