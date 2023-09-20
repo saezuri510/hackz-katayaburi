@@ -3,13 +3,12 @@ import { NextPage } from "next";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { BsPlayFill } from "react-icons/bs";
-import { io } from "socket.io-client";
 
 import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
-// import { socket } from "@/libs/socket";
+import { socket } from "@/libs/socket";
 
 type Inputs = {
   nickname: string;
@@ -17,18 +16,22 @@ type Inputs = {
 };
 
 export const IndexPage: NextPage = () => {
-  const socket = io("https://f8f7-49-104-49-114.ngrok-free.app/");
-
   useEffect(() => {
-    console.log("kurakke");
-
-    socket.on("kurakke", (message: string) => {
+    const onKurakke = (message: string) => {
       console.log(`Connected to the server${message}`);
-    });
+    };
 
-    socket.on("joinedRoom", (roomPassphrase) => {
-      console.log(`Joined room with passphrase: ${roomPassphrase}`);
-    });
+    const onJoinedRoom = (passphrase: string) => {
+      console.log(`Joined room with passphrase: ${passphrase}`);
+    };
+
+    socket.on("kurakke", onKurakke);
+    socket.on("joinedRoom", onJoinedRoom);
+
+    return () => {
+      socket.off("kurakke", onKurakke);
+      socket.off("joinedRoom", onJoinedRoom);
+    };
   }, []);
 
   const {
