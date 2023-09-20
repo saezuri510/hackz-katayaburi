@@ -24,17 +24,22 @@ export const IndexPage: NextPage = () => {
       console.log(`Connected to the server${message}`);
     };
 
-    const onJoinedRoom = (passphrase: string) => {
-      console.log(`Joined room with passphrase: ${passphrase}`);
+    const onRoomMembers = (
+      members: {
+        id: string;
+        nickname: string;
+      }[],
+    ) => {
+      console.log(members);
       router.push("/member");
     };
 
     socket.on("kurakke", onKurakke);
-    socket.on("joinedRoom", onJoinedRoom);
+    socket.on("roomMembers", onRoomMembers);
 
     return () => {
       socket.off("kurakke", onKurakke);
-      socket.off("joinedRoom", onJoinedRoom);
+      socket.off("roomMembers", onRoomMembers);
     };
   }, [router]);
 
