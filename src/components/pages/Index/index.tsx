@@ -9,6 +9,8 @@ import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
+import { Player } from "@/libs/recoil/types/Player";
+import { useRoomState } from "@/libs/recoil/useRoomState";
 import { socket } from "@/libs/socket";
 
 type Inputs = {
@@ -17,6 +19,8 @@ type Inputs = {
 };
 
 export const IndexPage: NextPage = () => {
+  const { addMember, setRoomValue } = useRoomState();
+
   const router = useRouter();
 
   useEffect(() => {
@@ -24,13 +28,8 @@ export const IndexPage: NextPage = () => {
       console.log(`Connected to the server${message}`);
     };
 
-    const onRoomMembers = (
-      members: {
-        id: string;
-        nickname: string;
-      }[],
-    ) => {
-      console.log(members);
+    const onRoomMembers = (members: Player[]) => {
+      addMember(members);
       router.push("/member");
     };
 
@@ -41,7 +40,7 @@ export const IndexPage: NextPage = () => {
       socket.off("kurakke", onKurakke);
       socket.off("roomMembers", onRoomMembers);
     };
-  }, [router]);
+  }, [addMember, router]);
 
   const {
     formState: { isValid },
@@ -52,7 +51,10 @@ export const IndexPage: NextPage = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     socket.emit("joinOrCreateRoom", data.passphrase, data.nickname);
-    console.log(data);
+    setRoomValue((prev) => ({
+      ...prev,
+      passphrase: data.passphrase,
+    }));
     reset();
   };
 
