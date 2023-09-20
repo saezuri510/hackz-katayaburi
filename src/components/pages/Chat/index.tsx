@@ -10,11 +10,13 @@ function ChatPage() {
     <MainLayout>
       <GameFrame>
         <div className="flex flex-col justify-center">
-          <div className="shadow shadow-black">
+          <div className="shadow shadow-black h-96 w-96">
             <ChatBubble name="akira" align="left">akira</ChatBubble>
             <ChatBubble name="kurakke" align="right">lfdfafadsfasdfsdlk</ChatBubble>
           </div>
-          <PopButton className="m-5">次へ</PopButton>
+          <div className="flex justify-center">
+            <PopButton className="m-5">次へ</PopButton>
+          </div>
         </div>
       </GameFrame>
     </MainLayout>

@@ -10,6 +10,11 @@ import { Timer } from "@/components/layouts/Timer";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
 
+function play() {
+  const audio = new Audio("/sound/bell.mp3");
+  audio.play();
+}
+
 export const ThemePage: NextPage = () => {
   const [count, setCount] = useState(0);
 
@@ -17,11 +22,16 @@ export const ThemePage: NextPage = () => {
     const timer = setInterval(() => {
       setCount((prev) => {
         if (count <= 1199) {
+          const remainingTime = 1200 - prev;
+          if (remainingTime <= 300) {
+            console.log(1);
+            play();
+          }
           return prev + 1;
         }
         return prev;
       });
-    }, 50);
+    }, 1);
     return () => {
       clearInterval(timer);
     };
