@@ -1,18 +1,24 @@
-import BackGround from '@/components/ui/BackGround'
-import Box from '@/components/ui/Box'
-import { PopButton } from '@/components/ui/domain/PopButton'
-import React from 'react'
+import React from "react";
+
+import { GameFrame } from "@/components/layouts/GameFrame";
+import { MainLayout } from "@/components/layouts/MainLayout";
+import { PopButton } from "@/components/ui/domain/PopButton";
+import ChatBubble from "@/components/ui/domain/ChatBubble";
 
 function ChatPage() {
   return (
-    <BackGround>
-      <Box>
-        <div>
-          <PopButton>次へ</PopButton>
+    <MainLayout>
+      <GameFrame>
+        <div className="flex flex-col justify-center">
+          <div className="shadow shadow-black">
+            <ChatBubble align="left">akira</ChatBubble>
+            <ChatBubble align="right">lfdfasdlk</ChatBubble>
+          </div>
+          <PopButton className="m-5">次へ</PopButton>
         </div>
-      </Box>
-    </BackGround>
-  )
+      </GameFrame>
+    </MainLayout>
+  );
 }
 
-export default ChatPage
+export default ChatPage;

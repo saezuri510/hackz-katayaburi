@@ -1,8 +1,9 @@
-import BackGround from "@/components/ui/BackGround";
-import NumberPeople from "@/components/ui/NumberPeople";
-import CircularProgress from "@/components/icons/Timer";
 import React, { useEffect, useState } from "react";
-import Box from "@/components/ui/Box";
+
+import CircularProgress from "@/components/icons/CircularProgress";
+import { GameFrame } from "@/components/layouts/GameFrame";
+import { MainLayout } from "@/components/layouts/MainLayout";
+import NumberPeople from "@/components/layouts/NumberPeople";
 
 export function AnswerPage() {
   const [count, SetCount] = useState(0);
@@ -22,8 +23,8 @@ export function AnswerPage() {
   }, [count]);
 
   return (
-    <BackGround>
-      <Box>
+    <MainLayout>
+      <GameFrame>
         <div>
           <div className="m-5 flex justify-between">
             <NumberPeople />
@@ -37,8 +38,8 @@ export function AnswerPage() {
             </button>
           </div>
         </div>
-      </Box>
-    </BackGround>
+      </GameFrame>
+    </MainLayout>
   );
 }
 
