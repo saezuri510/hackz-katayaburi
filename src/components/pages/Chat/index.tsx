@@ -1,6 +1,5 @@
 import React from "react";
 
-import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import ChatBubble from "@/components/ui/domain/ChatBubble";
 import { PopButton } from "@/components/ui/domain/PopButton";
@@ -9,14 +8,14 @@ import UserBord from "@/components/ui/domain/UserBord";
 function ChatPage() {
   return (
     <MainLayout>
-      <div className="flex justify-center">
+      <div className="flex justify-center h-full">
         <div className="w-96 rounded-[6px] border-[2px] border-zinc-900/[.15] mx-5 px-[15px] py-[10px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
           <div className="text-center">プレイヤー(1)</div>
           <UserBord name="Akira"/>
         </div>
-        <div className="rounded-[6px] border-[2px] border-zinc-900/[.15] px-[15px] py-[10px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
-          <div className="flex flex-col justify-center">
-            <div className="my-[24px] justify-center rounded-[5px] bg-fuchsia-925/[.25] p-[16px] shadow-[inset_0_4px_0_0] shadow-black/[.2]">
+        <div className="h-full w-5/6 rounded-[6px] border-[2px] border-zinc-900/[.15] px-[15px] py-[10px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
+          <div className="h-full flex flex-col justify-center">
+            <div className="h-full my-[24px] justify-center rounded-[5px] bg-fuchsia-925/[.25] p-[16px] shadow-[inset_0_4px_0_0] shadow-black/[.2]">
               <ChatBubble align="left" name="akira">
                 akira
               </ChatBubble>
