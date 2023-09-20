@@ -20,7 +20,7 @@ export const ThemePage: NextPage = () => {
           </div>
           <div className="flex flex-col items-center justify-center space-y-[16px] pb-[64px]">
             <Image alt="image" height={136} src="/image/clock.png" width={136} />
-            <FrameText text="動的型付け言語といえば？" />
+            <FrameText fillColor="#db2777" fontSize={34} text="動的型付け言語といえば？" />
             <div className="flex justify-center">
               <PopInput
                 className="h-[40px] w-[400px]"

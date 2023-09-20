@@ -1,3 +1,5 @@
+import { AiFillCheckCircle } from "react-icons/ai";
+
 import { FrameText } from "@/components/icons/FrameText";
 import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
@@ -15,11 +17,15 @@ export const AnswerPage = () => {
             <NumberPeople />
             <Timer />
           </div>
-          <div className="flex flex-col items-center justify-center space-y-[16px] pb-[64px]">
-            <FrameText text="お題をあてる" />
+          <div className="mb-[64px] mt-[24px] flex flex-col items-center justify-center space-y-[16px] rounded-[5px] bg-fuchsia-925/[.25] p-[16px]">
+            <FrameText fillColor="#db2777" fontSize={34} text="お題をあてる" />
+            <FrameText fillColor="rgb(34 197 94)" fontSize={20} text="python javascript" />
             <div className="flex justify-center">
               <PopInput className="h-[40px] w-[400px]" type="text" />
-              <PopButton className="ml-[8px] w-32 drop-shadow-lg">完了！</PopButton>
+              <PopButton className="ml-[8px] w-32 drop-shadow-lg">
+                <AiFillCheckCircle size={24} />
+                <div className="w-[96px]">完了！</div>
+              </PopButton>
             </div>
           </div>
         </>
