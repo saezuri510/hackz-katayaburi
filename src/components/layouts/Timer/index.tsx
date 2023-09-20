@@ -1,15 +1,11 @@
 import Image from "next/image";
 
-import CircularProgress from "@/components/icons/CircularProgress";
+import { CircularProgress } from "@/components/icons/CircularProgress";
 
-type Props = {
-  count: number;
-};
-
-export const Timer = ({ count }: Props) => {
+export const Timer = () => {
   return (
     <div className="relative h-[150px] w-[150px]">
-      <CircularProgress count={count} />
+      <CircularProgress />
       <Image
         alt="lap-timer-frame"
         className="absolute"

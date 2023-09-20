@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 
 import { FrameText } from "@/components/icons/FrameText";
 import { GameFrame } from "@/components/layouts/GameFrame";
@@ -11,33 +10,17 @@ import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
 
 export const ThemePage: NextPage = () => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCount((prev) => {
-        if (count <= 1199) {
-          return prev + 1;
-        }
-        return prev;
-      });
-    }, 50);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [count]);
-
   return (
     <MainLayout>
       <GameFrame>
         <>
           <div className="flex w-[768px] justify-between">
             <NumberPeople />
-            <Timer count={count} />
+            <Timer />
           </div>
           <div className="flex flex-col items-center justify-center space-y-[16px] pb-[64px]">
             <Image alt="image" height={136} src="/image/clock.png" width={136} />
-            <FrameText text="動的型付け言語といえば？" />
+            <FrameText fillColor="#db2777" fontSize={34} text="動的型付け言語といえば？" />
             <div className="flex justify-center">
               <PopInput
                 className="h-[40px] w-[400px]"
