@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import { FrameText } from "@/components/icons/FrameText";
 import { GameFrame } from "@/components/layouts/GameFrame";
@@ -61,11 +62,3 @@ export const ThemePage: NextPage = () => {
     </MainLayout>
   );
 };
-function useState(arg0: number): [any, any] {
-  throw new Error("Function not implemented.");
-}
-
-function useEffect(arg0: () => () => void, arg1: any[]) {
-  throw new Error("Function not implemented.");
-}
-
