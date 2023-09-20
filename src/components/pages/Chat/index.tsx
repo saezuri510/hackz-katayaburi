@@ -18,7 +18,9 @@ function ChatPage() {
               lfdfafadsfasdfsdlk
             </ChatBubble>
           </div>
-          <PopButton className="m-5">次へ</PopButton>
+          <div className="flex justify-center">
+            <PopButton className="m-5">次へ</PopButton>
+          </div>
         </div>
       </GameFrame>
     </MainLayout>
