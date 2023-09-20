@@ -3,10 +3,10 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import { FrameText } from "@/components/icons/FrameText";
-import CircularProgress from "@/components/icons/Timer";
 import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import NumberPeople from "@/components/layouts/NumberPeople";
+import { Timer } from "@/components/layouts/Timer";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import { PopInput } from "@/components/ui/domain/PopInput";
 
@@ -16,12 +16,12 @@ export const ThemePage: NextPage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCount((prev) => {
-        if (count <= 60) {
+        if (count <= 1199) {
           return prev + 1;
         }
         return prev;
       });
-    }, 1000);
+    }, 50);
     return () => {
       clearInterval(timer);
     };
@@ -33,7 +33,7 @@ export const ThemePage: NextPage = () => {
         <>
           <div className="flex w-[768px] justify-between">
             <NumberPeople />
-            <CircularProgress count={count} />
+            <Timer count={count} />
           </div>
           <div className="flex flex-col items-center justify-center space-y-[16px] pb-[64px]">
             <Image alt="image" height={136} src="/image/clock.png" width={136} />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import CircularProgress from "@/components/icons/Timer";
+import CircularProgress from "@/components/icons/CircularProgress";
 import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import NumberPeople from "@/components/layouts/NumberPeople";
