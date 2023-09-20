@@ -1,11 +1,26 @@
-interface CircularProgressPercentage {
-  count: number;
-}
+import { useEffect, useState } from "react";
 
-function CircularProgress({ count }: CircularProgressPercentage) {
+export const CircularProgress = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount((prev) => {
+        if (count <= 1199) {
+          return prev + 1;
+        }
+        return prev;
+      });
+    }, 50);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [count]);
+
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
   const offset = (count / 1200) * circumference;
+
   return (
     <svg
       className="absolute left-[15px] top-[22px] z-[-1] rounded-full border border-black"
@@ -23,7 +38,7 @@ function CircularProgress({ count }: CircularProgressPercentage) {
         cy="60"
         fill="transparent"
         r={radius}
-        stroke={count > 899 ? "rgb(253 224 71)" : "rgb(132 204 22)"}
+        stroke={count > 899 ? "rgb(253 224 71)" : "rgb(7 241 205)"}
         strokeDasharray={circumference}
         strokeDashoffset={circumference - offset}
         strokeWidth="100"
@@ -31,6 +46,4 @@ function CircularProgress({ count }: CircularProgressPercentage) {
       />
     </svg>
   );
-}
-
-export default CircularProgress;
+};

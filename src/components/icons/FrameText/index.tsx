@@ -1,8 +1,10 @@
 type Props = {
   text: string;
+  fillColor: string;
+  fontSize: number;
 };
 
-export const FrameText = ({ text }: Props) => {
+export const FrameText = ({ fillColor, fontSize, text }: Props) => {
   return (
     <svg
       height="52"
@@ -14,9 +16,9 @@ export const FrameText = ({ text }: Props) => {
       <text
         dominantBaseline="alphabetic"
         dy="0.4em"
-        fill="#db2777"
+        fill={fillColor}
         fontFamily="Meiryo UI"
-        fontSize="34"
+        fontSize={fontSize}
         fontWeight="bold"
         letterSpacing="4"
         stroke="#000000"
@@ -31,9 +33,9 @@ export const FrameText = ({ text }: Props) => {
       <text
         dominantBaseline="alphabetic"
         dy="0.4em"
-        fill="#db2777"
+        fill={fillColor}
         fontFamily="Meiryo UI"
-        fontSize="34"
+        fontSize={fontSize}
         fontWeight="bold"
         letterSpacing="4"
         strokeWidth="0"

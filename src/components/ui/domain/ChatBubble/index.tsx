@@ -6,7 +6,7 @@ interface ChatBubbleChildren {
   align: "left" | "right";
 }
 
-const ChatBubble = ({ name, children, align }: ChatBubbleChildren) => {
+const ChatBubble = ({ align, children, name }: ChatBubbleChildren) => {
   return (
     <div className={`flex flex-col gap-1 p-4 ${align === "left" ? "items-start" : "items-end"}`}>
       <div className="text-[5px]">{name}</div>

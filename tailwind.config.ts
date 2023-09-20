@@ -14,6 +14,9 @@ module.exports = {
           "925": "rgb(80 24 81)",
         },
       },
+      fontFamily: {
+        "nunito-sans": ["var(--font-nunito-sans--bold)"],
+      },
     },
   },
 };
