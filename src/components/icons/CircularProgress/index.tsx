@@ -38,7 +38,7 @@ export const CircularProgress = () => {
         cy="60"
         fill="transparent"
         r={radius}
-        stroke={count > 899 ? "rgb(253 224 71)" : "rgb(7 241 205)"}
+        stroke={count > 899 ? "#F7B500" : "rgb(7 241 205)"}
         strokeDasharray={circumference}
         strokeDashoffset={circumference - offset}
         strokeWidth="100"

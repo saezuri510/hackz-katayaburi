@@ -89,14 +89,8 @@ const MemberPage = () => {
                 <UserBord name={name} status={status} />
               </Fragment>
             ))}
-            {/* <UserBord status name="Akira" />
-            <UserBord name="空" status={false} />
-            <UserBord name="空" status={false} />
-            <UserBord name="空" status={false} />
-            <UserBord name="空" status={false} />
-            <UserBord name="空" status={false} /> */}
             <div className="pt-3">
-              <PopButton onClick={handler}>
+              <PopButton className="disabled:cursor-no-drop disabled:bg-gray-400" onClick={handler}>
                 <BsPlayFill />
                 <div className="flex h-[30px] w-[60px] items-center justify-center">開始</div>
               </PopButton>
