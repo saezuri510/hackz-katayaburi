@@ -9,11 +9,27 @@ import { MainLayout } from "@/components/layouts/MainLayout";
 import ChatBubble from "@/components/ui/domain/ChatBubble";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import UserBord from "@/components/ui/domain/UserBord";
+import { Answer } from "@/libs/recoil/types/Answer";
 
 function ChatPage() {
   const [chatList, setChatList] = useState<ReactNode[]>([]);
   const [count, setCount] = useState(0);
   const router = useRouter();
+
+  const array: Answer[] = [
+    {
+      answer: "動的型付け言語",
+      answer_user: { id: "kurakke", nickname: "system" },
+    },
+    {
+      answer: "python javascript",
+      answer_user: { id: "kurakke", nickname: "kurakke" },
+    },
+    {
+      answer: "人気の言語",
+      answer_user: { id: "kurakke", nickname: "kurakke" },
+    },
+  ];
 
   const scrollableElementRef = useRef<HTMLDivElement>(null);
 
@@ -22,8 +38,12 @@ function ChatPage() {
       flushSync(() => {
         setChatList((prevList) => [
           ...prevList,
-          <ChatBubble key={prevList.length} align={count % 2 == 0 ? "right" : "left"} name="akira">
-            adfasdfa
+          <ChatBubble
+            key={prevList.length}
+            align={count % 2 == 0 ? "right" : "left"}
+            name={array[count].answer_user.nickname !== "kurakke" ? undefined : "kurakke"}
+          >
+            {array[count].answer}
           </ChatBubble>,
         ]);
       });
@@ -46,7 +66,7 @@ function ChatPage() {
       <div className="flex h-full justify-center">
         <div className="mx-5 flex w-96 flex-col items-center rounded-[6px] border-[2px] border-zinc-900/[.15] px-[15px] py-[10px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
           <FrameText fillColor="#73EECD" fontSize={100} text="プレイヤー" width={200} />
-          <UserBord status name="Akira" />
+          <UserBord status name="kurakke" />
         </div>
         <div className="h-full w-5/6 rounded-[6px] border-[2px] border-zinc-900/[.15] px-[15px] py-[10px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
           <div className="flex h-full flex-col justify-center">
@@ -67,7 +87,7 @@ function ChatPage() {
               </ScrollArea.Scrollbar>
             </ScrollArea.Root>
             <div className="flex justify-center">
-              {chatList.length > 9 ? (
+              {chatList.length > 2 ? (
                 <PopButton onClick={handler}>
                   <BsPlayFill />
                   <div className="flex h-[30px] w-[60px] items-center justify-center">終了</div>

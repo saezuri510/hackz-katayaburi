@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ChatBubbleChildren {
-  name: string;
+  name?: string;
   children: string;
   align: "left" | "right";
 }
@@ -9,7 +9,7 @@ interface ChatBubbleChildren {
 const ChatBubble = ({ align, children, name }: ChatBubbleChildren) => {
   return (
     <div className={`flex flex-col gap-1 p-4 ${align === "left" ? "items-start" : "items-end"}`}>
-      <div className="font-mono text-[18px] text-white">{name}</div>
+      {name && <div className="font-mono text-[18px] text-white">{name}</div>}
       <div className="relative inline-block rounded-md border border-black bg-white px-2 text-center text-[28px]">
         <span>{children}</span>
         <div

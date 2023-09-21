@@ -19,7 +19,7 @@ import { socket } from "@/libs/socket";
 // }
 
 export const ThemePage: NextPage = () => {
-  const [question, setQuestion] = useState("静的型付け言語");
+  const [question, setQuestion] = useState("動的型付け言語");
 
   const router = useRouter();
 
