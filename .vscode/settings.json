@@ -4,5 +4,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "cSpell.words": ["clsx", "Kurakke"]
+  "cSpell.words": ["clsx", "Gamestart", "Kurakke"]
 }
