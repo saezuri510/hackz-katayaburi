@@ -1,4 +1,5 @@
 import * as ScrollArea from "@radix-ui/react-scroll-area";
+import { useRouter } from "next/router";
 import React, { ReactNode, useState } from "react";
 import { BsPlayFill } from "react-icons/bs";
 
@@ -10,14 +11,23 @@ import UserBord from "@/components/ui/domain/UserBord";
 
 function ChatPage() {
   const [chatList, setChatList] = useState<ReactNode[]>([]);
+  const [count, setCount] = useState(0);
+  const router = useRouter();
 
   const handleAddComponent = () => {
-    setChatList((prevList) => [
-      ...prevList,
-      <ChatBubble key={prevList.length} align="left" name="akira">
-        adfasdfa
-      </ChatBubble>,
-    ]);
+    if (count < 11) {
+      setChatList((prevList) => [
+        ...prevList,
+        <ChatBubble key={prevList.length} align={count % 2 == 0 ? "right" : "left"} name="akira">
+          adfasdfa
+        </ChatBubble>,
+      ]);
+      setCount((prev) => prev + 1);
+    }
+  };
+
+  const handler = () => {
+    router.push("/member");
   };
 
   return (
@@ -48,10 +58,17 @@ function ChatPage() {
               </ScrollArea.Scrollbar>
             </ScrollArea.Root>
             <div className="flex justify-center">
-              <PopButton onClick={handleAddComponent}>
-                <BsPlayFill />
-                <div className="flex h-[30px] w-[60px] items-center justify-center">次へ</div>
-              </PopButton>
+              {chatList.length > 9 ? (
+                <PopButton onClick={handler}>
+                  <BsPlayFill />
+                  <div className="flex h-[30px] w-[60px] items-center justify-center">終了</div>
+                </PopButton>
+              ) : (
+                <PopButton onClick={handleAddComponent}>
+                  <BsPlayFill />
+                  <div className="flex h-[30px] w-[60px] items-center justify-center">次へ</div>
+                </PopButton>
+              )}
             </div>
           </div>
         </div>
