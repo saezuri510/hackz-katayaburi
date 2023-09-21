@@ -1,3 +1,4 @@
+import { ScrollArea } from "@radix-ui/themes";
 import React, { ReactNode, useState } from "react";
 import { BsPlayFill } from "react-icons/bs";
 
@@ -28,11 +29,20 @@ function ChatPage() {
         </div>
         <div className="h-full w-5/6 rounded-[6px] border-[2px] border-zinc-900/[.15] px-[15px] py-[10px] shadow-[inset_0_1px_0_0,0_2px_0_0] shadow-white/[.15]">
           <div className="flex h-full flex-col justify-center">
-            <div className="my-[24px] h-full justify-center rounded-[5px] bg-fuchsia-925/[.25] p-[16px] shadow-[inset_0_4px_0_0] shadow-black/[.2]">
+            {/* <div className="my-[24px] h-full justify-center rounded-[5px] bg-fuchsia-925/[.25] p-[16px] shadow-[inset_0_4px_0_0] shadow-black/[.2]">
               {chatList.map((component, index) => (
                 <div key={index}>{component}</div>
               ))}
-            </div>
+            </div> */}
+            <ScrollArea
+              className="my-[24px] h-full justify-center rounded-[5px] bg-fuchsia-925/[.25] p-[16px] shadow-[inset_0_4px_0_0] shadow-black/[.2]"
+              scrollbars="vertical"
+              type="always"
+            >
+              {chatList.map((component, index) => (
+                <div key={index}>{component}</div>
+              ))}
+            </ScrollArea>
             <div className="flex justify-center">
               <PopButton onClick={handleAddComponent}>
                 <BsPlayFill />

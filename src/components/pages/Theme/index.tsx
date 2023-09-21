@@ -51,7 +51,7 @@ export const ThemePage: NextPage = () => {
             <div className="flex justify-center">
               <PopInput
                 className="h-[40px] w-[400px]"
-                placeholder="ビーチでくつろぐハリーポッター"
+                placeholder="連想されるものを並べる"
                 type="text"
               />
               <PopButton className="ml-[8px] w-32 drop-shadow-lg">完了！</PopButton>
