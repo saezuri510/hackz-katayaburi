@@ -10,7 +10,7 @@ const UserBord = ({ name, status }: UserBordName) => {
     <div className="w-full">
       <div
         className={`flex items-center justify-start rounded-s-full border border-black ${
-          status === true ? "bg-slate-400" : "opacity-50"
+          status === true ? "bg-white/[.7] shadow-[0_3px_7px_0] shadow-black/[.16]" : "opacity-50"
         } mx-5 my-1 h-10 w-auto p-1`}
       >
         <div className="flex h-7 w-7 justify-center rounded-full border border-black bg-white p-1">
