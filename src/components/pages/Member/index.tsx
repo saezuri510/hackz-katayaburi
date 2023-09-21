@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import Router from "next/router";
+import React, { ChangeEvent, Fragment, useState } from "react";
 import { BsPlayFill } from "react-icons/bs";
 
 import { FrameText } from "@/components/icons/FrameText";
@@ -7,46 +7,28 @@ import { GameFrame } from "@/components/layouts/GameFrame";
 import { MainLayout } from "@/components/layouts/MainLayout";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import UserBord from "@/components/ui/domain/UserBord";
-import { Player } from "@/libs/recoil/types/Player";
-import { useGameResultState } from "@/libs/recoil/useGameResultState";
-import { useRoomState } from "@/libs/recoil/useRoomState";
-import { socket } from "@/libs/socket";
 
 const MemberPage = () => {
-  const { addMember, roomValue } = useRoomState();
-  const { setGameResultValue } = useGameResultState();
+  const [UserList, setUserList] = useState<{ name: string; status: boolean }[]>([
+    { name: "Akira", status: true },
+    { name: "Akira", status: true },
+    { name: "Akira", status: true },
+    { name: "Akira", status: true },
+  ]);
 
-  const router = useRouter();
+  const handler = () => {
+    Router.push("/theme");
+  };
 
-  useEffect(() => {
-    const onGamestart = () => {
-      router.push("theme");
-    };
-
-    const onYourTurn = (msgToSend: string) => {
-      setGameResultValue((prev) => ({
-        ...prev,
-        theme: msgToSend,
-      }));
-    };
-
-    const onRoomMembers = (members: Player[]) => {
-      addMember(members);
-    };
-
-    socket.on("gamestart", onGamestart);
-    socket.on("yourTurn", onYourTurn);
-    socket.on("roomMembers", onRoomMembers);
-
-    return () => {
-      socket.off("gamestart", onGamestart);
-      socket.off("yourTurn", onYourTurn);
-      socket.off("roomMembers", onRoomMembers);
-    };
-  }, [router, setGameResultValue, addMember]);
-
-  const handleStart = () => {
-    socket.emit("gamestart", roomValue.passphrase);
+  const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = Number(e.target.value);
+    setUserList((prev) => {
+      if (value < prev.length) {
+        return prev.splice(0, value);
+      }
+      const length = Math.max(prev.length, value - prev.length);
+      return [...prev, ...[...Array(length)].map(() => ({ name: "空", status: false }))];
+    });
   };
 
   return (
@@ -55,25 +37,60 @@ const MemberPage = () => {
         <GameFrame>
           <div className="flex w-96 flex-col items-center">
             <FrameText fillColor="#73EECD" fontSize={100} text="プレイヤー" width={200} />
-            {(() => {
-              const elm = [];
-
-              for (let i = 0; i < 6; i++) {
-                if (roomValue.members[i]) {
-                  elm.push(<UserBord key={i} status name={roomValue.members[i].nickname} />);
-                } else {
-                  elm.push(<UserBord key={i} name="空" status={false} />);
-                }
-              }
-
-              return elm;
-            })()}
+            <select
+              className="rounded-md border border-white bg-inherit text-white"
+              onChange={onChange}
+            >
+              <option className="text-black" value={4}>
+                4プレイヤー
+              </option>
+              <option className="text-black" value={5}>
+                5プレイヤー
+              </option>
+              <option className="text-black" value={6}>
+                6プレイヤー
+              </option>
+              <option className="text-black" value={7}>
+                7プレイヤー
+              </option>
+              <option className="text-black" value={8}>
+                8プレイヤー
+              </option>
+              <option className="text-black" value={9}>
+                9プレイヤー
+              </option>
+              <option className="text-black" value={10}>
+                10プレイヤー
+              </option>
+              <option className="text-black" value={12}>
+                12プレイヤー
+              </option>
+              <option className="text-black" value={14}>
+                14プレイヤー
+              </option>
+              <option className="text-black" value={16}>
+                16プレイヤー
+              </option>
+              <option className="text-black" value={18}>
+                18プレイヤー
+              </option>
+              <option className="text-black" value={20}>
+                20プレイヤー
+              </option>
+              <option className="text-black" value={30}>
+                30プレイヤー
+              </option>
+              <option className="text-black" value={50}>
+                50プレイヤー
+              </option>
+            </select>
+            {UserList.map(({ name, status }, index) => (
+              <Fragment key={index}>
+                <UserBord name={name} status={status} />
+              </Fragment>
+            ))}
             <div className="pt-3">
-              <PopButton
-                className="disabled:cursor-no-drop disabled:bg-gray-400"
-                disabled={roomValue.members.length < 2}
-                onClick={handleStart}
-              >
+              <PopButton className="disabled:cursor-no-drop disabled:bg-gray-400" onClick={handler}>
                 <BsPlayFill />
                 <div className="flex h-[30px] w-[60px] items-center justify-center">開始</div>
               </PopButton>
