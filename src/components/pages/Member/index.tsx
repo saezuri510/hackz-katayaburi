@@ -8,6 +8,7 @@ import { MainLayout } from "@/components/layouts/MainLayout";
 import { PopButton } from "@/components/ui/domain/PopButton";
 import UserBord from "@/components/ui/domain/UserBord";
 import { Player } from "@/libs/recoil/types/Player";
+import { RoomRecoilProps } from "@/libs/recoil/types/RoomRecoilProps";
 import { useGameResultState } from "@/libs/recoil/useGameResultState";
 import { useRoomState } from "@/libs/recoil/useRoomState";
 import { socket } from "@/libs/socket";
@@ -17,6 +18,25 @@ const MemberPage = () => {
   const { setGameResultValue } = useGameResultState();
 
   const router = useRouter();
+
+  const mockRoomValue: RoomRecoilProps = {
+    gameStarted: false,
+    members: [
+      {
+        id: "1",
+        nickname: "akira",
+      },
+      {
+        id: "2",
+        nickname: "kurakke",
+      },
+      {
+        id: "3",
+        nickname: "hayata",
+      },
+    ],
+    passphrase: "",
+  };
 
   useEffect(() => {
     const onGamestart = () => {
@@ -47,6 +67,7 @@ const MemberPage = () => {
 
   const handleStart = () => {
     socket.emit("gamestart", roomValue.passphrase);
+    router.push("/theme");
   };
 
   return (
@@ -59,8 +80,8 @@ const MemberPage = () => {
               const elm = [];
 
               for (let i = 0; i < 6; i++) {
-                if (roomValue.members[i]) {
-                  elm.push(<UserBord key={i} status name={roomValue.members[i].nickname} />);
+                if (mockRoomValue.members[i]) {
+                  elm.push(<UserBord key={i} status name={mockRoomValue.members[i].nickname} />);
                 } else {
                   elm.push(<UserBord key={i} name="空" status={false} />);
                 }
@@ -71,7 +92,7 @@ const MemberPage = () => {
             <div className="pt-3">
               <PopButton
                 className="disabled:cursor-no-drop disabled:bg-gray-400"
-                disabled={roomValue.members.length < 2}
+                // disabled={roomValue.members.length < 2}
                 onClick={handleStart}
               >
                 <BsPlayFill />

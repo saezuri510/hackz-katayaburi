@@ -52,6 +52,7 @@ export const IndexPage: NextPage = () => {
       passphrase: data.passphrase,
     }));
     reset();
+    router.push("/member");
   };
 
   return (

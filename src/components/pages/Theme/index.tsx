@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 
@@ -18,7 +19,9 @@ import { socket } from "@/libs/socket";
 // }
 
 export const ThemePage: NextPage = () => {
-  const [question, setQuestion] = useState("");
+  const [question, setQuestion] = useState("静的型付け言語");
+
+  const router = useRouter();
 
   useEffect(() => {
     const onYourTurn = (msgToSend: string) => {
@@ -69,7 +72,10 @@ export const ThemePage: NextPage = () => {
                 placeholder="連想されるものを並べる"
                 type="text"
               />
-              <PopButton className="ml-[8px] w-32 drop-shadow-lg">
+              <PopButton
+                className="ml-[8px] w-32 drop-shadow-lg"
+                onClick={() => router.push("answer")}
+              >
                 <AiFillCheckCircle size={24} />
                 <div className="w-[96px]">完了！</div>
               </PopButton>
