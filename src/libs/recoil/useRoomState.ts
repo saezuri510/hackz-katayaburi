@@ -20,7 +20,7 @@ export const useRoomState = () => {
     (newMembers: Player[]) => {
       setRoomValue((prev) => ({
         ...prev,
-        members: [...prev.members, ...newMembers],
+        members: newMembers,
       }));
     },
     [setRoomValue],
