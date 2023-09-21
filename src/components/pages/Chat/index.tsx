@@ -1,4 +1,4 @@
-import { ScrollArea } from "@radix-ui/themes";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
 import React, { ReactNode, useState } from "react";
 import { BsPlayFill } from "react-icons/bs";
 
@@ -34,15 +34,19 @@ function ChatPage() {
                 <div key={index}>{component}</div>
               ))}
             </div> */}
-            <ScrollArea
-              className="my-[24px] h-full justify-center rounded-[5px] bg-fuchsia-925/[.25] p-[16px] shadow-[inset_0_4px_0_0] shadow-black/[.2]"
-              scrollbars="vertical"
-              type="always"
-            >
-              {chatList.map((component, index) => (
-                <div key={index}>{component}</div>
-              ))}
-            </ScrollArea>
+            <ScrollArea.Root className="my-[24px] h-full justify-center overflow-hidden rounded-[5px] bg-fuchsia-925/[.25] p-[16px] shadow-[inset_0_4px_0_0] shadow-black/[.2]">
+              <ScrollArea.Viewport className="h-full w-full ">
+                {chatList.map((component, index) => (
+                  <div key={index}>{component}</div>
+                ))}
+              </ScrollArea.Viewport>
+              <ScrollArea.Scrollbar
+                className="flex touch-none select-none p-0.5 transition-colors duration-[160ms] ease-out data-[orientation=horizontal]:h-2.5 data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col"
+                orientation="vertical"
+              >
+                <ScrollArea.Thumb className="relative flex-1 rounded-[10px] bg-white/[.6] before:absolute before:left-1/2 before:top-1/2 before:h-full before:min-h-[44px] before:w-full before:min-w-[44px] before:-translate-x-1/2 before:-translate-y-1/2 before:content-['']" />
+              </ScrollArea.Scrollbar>
+            </ScrollArea.Root>
             <div className="flex justify-center">
               <PopButton onClick={handleAddComponent}>
                 <BsPlayFill />
