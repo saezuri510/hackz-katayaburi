@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 import { FrameText } from "@/components/icons/FrameText";
 import { GameFrame } from "@/components/layouts/GameFrame";
@@ -68,7 +69,10 @@ export const ThemePage: NextPage = () => {
                 placeholder="連想されるものを並べる"
                 type="text"
               />
-              <PopButton className="ml-[8px] w-32 drop-shadow-lg">完了！</PopButton>
+              <PopButton className="ml-[8px] w-32 drop-shadow-lg">
+                <AiFillCheckCircle size={24} />
+                <div className="w-[96px]">完了！</div>
+              </PopButton>
             </div>
           </div>
         </>
